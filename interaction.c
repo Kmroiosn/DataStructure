@@ -1,4 +1,4 @@
-/* <licence>
+/* <license>
  *  This source code is a course assignment for teacher review only,
  *  and is not recommended for other purposes.
  */
