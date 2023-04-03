@@ -1,8 +1,3 @@
-/* <license>
- *  This source code is a course assignment for teacher review only,
- *  and is not recommended for other purposes.
- */
-
 #include <stdio.h>
 #include "realizeLink.h"
 
@@ -61,7 +56,7 @@ int main()
             int * interOcc7 = NULL;
             interOcc7 = malloc(sizeof(int)*10);
             stackTraverse(S, interOcc7);
-            for (int i = 0; i < S.top-S.base; i++)
+            for (int i = 0; i < S->top-S->base; i++)
                 printf("%d\n",interOcc7[i]);
             break;
         default:
