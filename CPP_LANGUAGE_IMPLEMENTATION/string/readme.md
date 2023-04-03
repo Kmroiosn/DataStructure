@@ -1,17 +1,17 @@
-ADT String{  
-Data Object:  
+# ADT String{  
+## Data Object:  
 $$
 
 D=\{a_i\, |\, a_i\in CharacterSet,i=1,2,3,...,n,n\ge 0\}  
 
 $$
-Data Relationships:  
+## Data Relationships:  
 $$
 
 R= \{<a_{i-1},a_i>|\, a_{i-1},a_i\in D,i=2,3,...,n\}  
 
 $$
-Basic Operation:  
+## Basic Operation:  
 $$
 \begin{align*}
 
@@ -45,7 +45,17 @@ $$
 &replace(\&S,T,V)  \\
     &\qquad Initial\ Condition:\ String\ S\ T\ V\ exists,\ string T\ is not empty  \\
     &\qquad Operation:\ Replace\ all\ non-overlapping\ substrings\ equal\ to\ T\ that\ occur\ in\ the\ main\ string\ S\ with\ V  \\
+&strInsert(\&S,pos,T) \\
+    &\qquad Initial\ Condition:\ String\ S\ T\ exists,\ 1\leq pos\leq strLength(S)+1  \\
+    &\qquad Operation:\ Insert\ the\ string\ T\ before\ the\ pos\ character\ of\ the\ string\ S  \\
+&strDelete(\&S,pos,len) \\
+    &\qquad Initial\ Condition:\ String\ S\ exists,\ 1\leq pos\leq strLength(S)-len+1  \\
+    &\qquad Operation:\ Delete\ the\ pos\ substring\ of\ length\ len\ from\ the\ string\ S  \\
+&destroyString(\&S) \\
+    &\qquad Initial\ Condition:\ String\ S\ exists  \\
+    &\qquad Operation:\ Destroy\ string\ S  \\
 
 \end{align*}
 $$
-}
+
+# }
