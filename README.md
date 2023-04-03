@@ -3,60 +3,60 @@ data structure classwork by sherlong
 
 This repository is for sharing and discussing assignments from Data Structures courses
 
-## data structure
+- data structure
 
-### logical structure
+    - logical structure
 
-#### linear structure
+        - linear structure
 
-##### linear table
+            - linear table
 
-##### stacks and queues
+            - stacks and queues
 
-##### string
+            - string
 
-#### nonlinear structure
+        - nonlinear structure
 
-##### set structure
+            - set structure
 
-##### tree structure
+            - tree structure
 
-##### graph structure
+            - graph structure
 
-### storage structure
+    - storage structure
 
-#### sequential storage structure
+        - sequential storage structure
 
-#### linked storage structure
+        - linked storage structure
 
-## algorithm
+- algorithm
 
-### definition
+    - definition
 
-### characteristic
+    - characteristic
 
-#### finiteness
+        - finiteness
 
-#### determinacy
+        - determinacy
 
-#### feasibility
+        - feasibility
 
-#### input
+        - input
 
-#### output
+        - output
 
-### evaluation criterion
+    - evaluation criterion
 
-#### validity
+        - validity
 
-#### readability
+        - readability
 
-#### robustness
+        - robustness
 
-#### efficiency
+        - efficiency
 
-### efficiency measurement
+    - efficiency measurement
 
-#### time complexity
+        - time complexity
 
-#### spatial complexity
+        - spatial complexity
