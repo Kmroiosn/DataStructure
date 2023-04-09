@@ -97,6 +97,7 @@ Status getTop(Stack *S)
 }
 
 Status stackTraverse(Stack *S, int(*stackTraverse_out))
+// need refactor
 {
     Stack *p;
     p = S;

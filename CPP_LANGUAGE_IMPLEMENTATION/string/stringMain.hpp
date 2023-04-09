@@ -3,25 +3,28 @@
 #define MAXLEN 255
 #define CHUNKSIZE 80
 
+typedef struct
 // string stack
-typedef struct{
-    char ch[MAXLEN+1];
+{
+    char ch[MAXLEN + 1];
     int length;
-}sString;
+} sString;
 
+typedef struct
 // string piece
-typedef struct{
+{
     char *ch;
     int length;
-}hString;
+} hString;
 
+typedef struct Chunk
 // string link
-typedef struct Chunk{
+{
     char ch[CHUNKSIZE];
     struct Chunk *next;
-}Chunk;
-typedef struct{
+} Chunk;
+typedef struct
+{
     Chunk *head, *tail;
     int length;
-}lString;
-
+} lString;

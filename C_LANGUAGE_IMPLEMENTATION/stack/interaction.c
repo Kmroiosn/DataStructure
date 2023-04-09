@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "realizeLink.h"
+#include "realizePiece.h"
 
 int main()
 {
@@ -53,11 +53,11 @@ int main()
             printf("%d\n", getTop(S));
             break;
         case '7':
-            int * interOcc7 = NULL;
-            interOcc7 = malloc(sizeof(int)*10);
+            int *interOcc7 = NULL;
+            interOcc7 = malloc(sizeof(int) * 10);
             stackTraverse(S, interOcc7);
-            for (int i = 0; i < S->top-S->base; i++)
-                printf("%d\n",interOcc7[i]);
+            for (int i = 0; i < S->top - S->base; i++)
+                printf("%d\n", interOcc7[i]);
             break;
         default:
             break;
