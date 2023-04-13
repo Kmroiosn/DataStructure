@@ -3,6 +3,8 @@
 #define MAXLEN 255
 #define CHUNKSIZE 80
 
+typedef int status;
+
 typedef struct
 // string stack
 {
@@ -28,3 +30,9 @@ typedef struct
     Chunk *head, *tail;
     int length;
 } lString;
+
+
+
+status strAssign(&T,chars){
+    sString T = 
+}
