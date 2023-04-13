@@ -1,67 +1,86 @@
+%!TEX TS-program = xelatex
 \documentclass[11pt,twoside,a4paper]{ctexart}
 
-\usepackage{parskip}
+\usepackage{fontspec}
 \usepackage{listings}
-% \usepackage{listingsutf8}
-\usepackage[usenames,dvipsnames]{xcolor}
-\definecolor{commentgreen}{RGB}{2,112,10}
-\definecolor{eminence}{RGB}{108,48,130}
-\definecolor{weborange}{RGB}{255,165,0}
-\definecolor{frenchplum}{RGB}{129,20,83}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{xeCJK}
 
 \title{
     \begin{huge}
     \textbf{数据结构实验报告}
-    \author{作者：
-    学号：
-    专业班级：
+    \author{作者：\\
+    学号：\\
+    专业班级：\\
     指导老师：}
-    \date{实验名称：
+    \date{实验名称：\\
+    2022-2023学年第二学期\\
     日期：\today}
     \end{huge}
 }
 
-\begin{document}
-
-\lstset {
-    % extendedchars=true,
-    % inputencoding=utf8,
-    language=C++,
-    frame=tb,
-    tabsize=4,
-    showstringspaces=false,
-    numbers=left,
-    %upquote=true,
-    commentstyle=\color{commentgreen},
-    keywordstyle=\color{eminence},
+% 设置代码的显示风格
+\lstset{
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green}\textit,
     stringstyle=\color{red},
-    basicstyle=\small\ttfamily, % basic font setting
-    emph={int,char,double,float,unsigned,void,bool},
-    emphstyle={\color{blue}},
-    escapechar=\&, % keyword highlighting
-    classoffset=1, % starting new class
-    otherkeywords={>,<,.,;,-,!,=,~},
-    morekeywords={>,<,.,;,-,!,=,~},
-    keywordstyle=\color{weborange},
-    classoffset=0,
+    showstringspaces=false,
+    language=Python,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    tabsize=4,
+    frame=trbl,   
+    frameround=tttt, 
+    numbers=left,       
+    numberstyle=\small\ttfamily\color{gray},
+} 
+
+% 设置中文字体
+\setCJKmainfont{SimSun}
+
+% 让 lstlistings 支持中文
+\lstset{
+    literate=%
+        {0}{{\textbf{0}}}{1}
+        {1}{{\textbf{1}}}{1}
+        {2}{{\textbf{2}}}{1}
+        {3}{{\textbf{3}}}{1}
+        {4}{{\textbf{4}}}{1}
+        {5}{{\textbf{5}}}{1}
+        {6}{{\textbf{6}}}{1}
+        {7}{{\textbf{7}}}{1}
+        {8}{{\textbf{8}}}{1}
+        {9}{{\textbf{9}}}{1}
+        {:}{{\textbf{:}}}{1}
+        {：}{{\textbf{：}}}{1}
+        {（}{{\textbf{（}}}{1}
+        {）}{{\textbf{）}}}{1}
+        {【}{{\textbf{【}}}{1}
+        {】}{{\textbf{】}}}{1}
+        {，}{{\textbf{，}}}{1}
+        {。}{{\textbf{。}}}{1}
+        {？}{{\textbf{？}}}{1}
+        {！}{{\textbf{！}}}{1},
 }
+
+\begin{document}
 
 \maketitle
 \newpage
+
 \begin{Large}
 \leftline{一、实验目的}
 \end{Large}
-
 
 \begin{Large}
     \leftline{二、实验内容}
 \end{Large}
 
-
 \begin{Large}
     \leftline{三、实验环境}
 \end{Large}
-
 
 \begin{Large}
     \leftline{四、实验过程}
@@ -69,18 +88,9 @@
 
 【分析】
 
-
 【代码】
 
-% 将代码文件保存在与该文件同目录中，在导入时需将“\lstinputlisting{filename}”中的“filename”更改为代码文件名
-
 \lstinputlisting{1.c}
-
-% 若代码中包含不被支持字符（例如：汉字，重音字符；原因是lstlistings包不支持UTF8编码，你可以尝试解决这个问题）
-% 请将上一行注释后取消注释并使用下面的代码环境（注意，你需要将代码完全复制到这个代码环境中）
-% \begin{verbatim}
-%     # 将代码复制到这里
-% \end{verbatim}
 
 【测试】
 
