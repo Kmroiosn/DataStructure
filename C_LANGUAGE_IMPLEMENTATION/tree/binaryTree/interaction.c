@@ -24,6 +24,15 @@ int main(void)
     int* b = 0;
     char MainIn1;
 
+    // this is a test tree
+    T->data = *(Status*)malloc(sizeof(Status));
+    T->data = 1;
+    T->leftchild->data = *(Status*)malloc(sizeof(Status));
+    T->leftchild->data = 0;
+    // T->rightchild->data = 1;
+    // T->leftchild->leftchild->data = 1;
+    // T->leftchild->rightchild->data = 0;
+
     while (1)
     {
         printf("Please choose:\n1.InitBinaryTree\n2.DLRtraverse\n3.LDRtraverse\n4.LRDtraverse\n");
