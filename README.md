@@ -1,3 +1,18 @@
+# Tools used
+
+    - Main Part
+
+        - GNU Linux
+        - gcc
+        - gdb
+        - GNU make
+
+    - Extension
+
+        - LaTex
+            - Windows11Pro
+            - MikTex
+
 # DataStructure
 data structure classwork by sherlong
 
