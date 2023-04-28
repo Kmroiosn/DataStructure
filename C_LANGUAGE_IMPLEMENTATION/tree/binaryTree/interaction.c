@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "realizeLink.h"
 
-#define elif else if
-
 int PrintA(Status a[])
 {
     int b = 0;
@@ -42,21 +40,21 @@ int main(void)
             InitBinaryTree(&T);
             continue;
         }
-        elif (MainIn1 == '2')
+        else if (MainIn1 == '2')
         {
             Status a[MAXSIZE];
             DLRtraverse(T, a, b);
             PrintA(a);
             continue;
         }
-        elif (MainIn1 == '3')
+        else if (MainIn1 == '3')
         {
             Status a[MAXSIZE];
             LDRtraverse(T, a, b);
             PrintA(a);
             continue;
         }
-        elif (MainIn1 == '4')
+        else if (MainIn1 == '4')
         {
             Status a[MAXSIZE];
             LRDtraverse(T, a, b);
