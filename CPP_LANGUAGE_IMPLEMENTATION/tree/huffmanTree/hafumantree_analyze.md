@@ -1,4 +1,4 @@
-# 对 ` ./hafumantree.cpp ` 的分析<sup>from ChatGPT</sup>
+# 对 ` ./hafumantree.cpp ` 的分析(from ChatGPT)
 ```
 这是一个C++程序，实现了Huffman树的构建和选择函数。程序输入n个权值，通过构建Huffman树，生成每个权值的编码。其中，Huffman树是一种特殊的二叉树，具有最优化的特性，常被用于数据压缩和编码中。
 
