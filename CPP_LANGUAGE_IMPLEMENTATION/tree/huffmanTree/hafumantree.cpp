@@ -1,12 +1,11 @@
-// <- GB 2312 ->
-
 #include <iostream>
+
 using namespace std;
 
 #define OK 1
 #define OVERFLOW -2
 #define ERROR -1
-#define MAXSIZE 100 //?????
+#define MAXSIZE 100
 
 typedef int Status;
 
@@ -37,7 +36,7 @@ void CreatHuffmanTree(HuffmanTree HT, int n)
     if (n <= 1)
         return;
     m = 2 * n - 1;
-    HT = new HTNode[m + 1]; // 0�ŵ�Ԫδ�ã�HT[m]��ʾ�����
+    HT = new HTNode[m + 1];
     for (int i = 1; i <= m; ++i)
     {
         HT[i].lch = 0;
@@ -45,26 +44,20 @@ void CreatHuffmanTree(HuffmanTree HT, int n)
         HT[i].parent = 0;
     }
 
-    cout << "Enter " << n << " �����Ȩ��: ";
+    cout << "Enter " << n << "number";
     for (int i = 1; i <= n; ++i)
         cin >> HT[i].weight;
 
     for (int i = n + 1; i <= m; ++i)
-    { // ����  Huffman��
+    {
         Select(HT, i - 1, s1, s2);
-        // ��HT[k](1��k��i-1)��ѡ��������˫����Ϊ0,
-        //  ��Ȩֵ��С�Ľ��,
-        //  ������������HT�е����s1��s2
         cout << s1 << "   " << s2 << endl;
 
         HT[s1].parent = i;
         HT[s2].parent = i;
-        // ��ʾ��F��ɾ��s1,s2
         HT[i].lch = s1;
         HT[i].rch = s2;
-        // s1,s2�ֱ���Ϊi�����Һ���
         HT[i].weight = HT[s1].weight + HT[s2].weight;
-        // i ��ȨֵΪ���Һ���Ȩֵ֮��
     }
 }
 
