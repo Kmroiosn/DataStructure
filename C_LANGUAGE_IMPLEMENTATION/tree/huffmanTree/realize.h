@@ -13,17 +13,9 @@ typedef struct
     int parent, left_child, right_child;
 } *huffman_tree, huffman_tree_node;
 
-Status createHuffmanTree(huffman_tree *huffman_tree_parameter, int n);
+Status createHuffmanTree(huffman_tree *huffman_tree_parameter, int n, int loop_step);
 
-int main()
-{
-    huffman_tree tree;
-    int n = 10;
-    createHuffmanTree(&tree, n);
-    return 0;
-}
-
-Status createHuffmanTree(huffman_tree *huffman_tree_parameter, int n)
+Status createHuffmanTree(huffman_tree *huffman_tree_parameter, int n, int loop_step)
 {
     if (n <= 1)
         return OK;

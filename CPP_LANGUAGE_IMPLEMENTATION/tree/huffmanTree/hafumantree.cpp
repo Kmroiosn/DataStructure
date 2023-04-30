@@ -20,9 +20,10 @@ void Select(HuffmanTree HT, int n, int &min1, int &min2);
 
 int main()
 {
+    int n = 10;
     HuffmanTree HT;
-    CreatHuffmanTree(HT, 4);
-    for (int i = 1; i <= 4; i++)
+    CreatHuffmanTree(HT, n);
+    for (int i = 1; i <= n; i++)
     {
         cout << HT[i].weight << "   " << HT[i].parent << "   " << HT[i].lch << "   "
              << "   " << HT[i].rch;
