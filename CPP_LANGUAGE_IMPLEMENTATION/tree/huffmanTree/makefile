@@ -1,4 +1,4 @@
-hafumantree:hafumantree.cpp
-	g++ -o hafumantree.out hafumantree.cpp
+huffmantree:huffmantree.cpp
+	g++ -o huffmantree.out huffmantree.cpp
 clean:
 	rm -f *.out

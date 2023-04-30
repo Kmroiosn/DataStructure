@@ -22,7 +22,7 @@ done
 # lineSeparator()
 
 # run the executable and input
-echo ${input[@]}|./hafumantree.out
+echo ${input[@]}|./huffmantree.out
 
 # use makefile remove the executable
 make clean
