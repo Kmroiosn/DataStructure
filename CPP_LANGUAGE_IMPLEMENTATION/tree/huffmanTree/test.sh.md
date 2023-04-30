@@ -19,5 +19,5 @@
 
 ## 一些问题
 
-在调用了`lineSeparator()`函数生成分割行后，貌似该函数后跟随的shell script结构和命令会失效
+在调用了`lineSeparator()`函数生成分割行后，貌似该函数后跟随的shell script结构和命令会失效  
 解决方法：删除`lineSeparator()`，但会失去分割行，不过能完成其他功能
