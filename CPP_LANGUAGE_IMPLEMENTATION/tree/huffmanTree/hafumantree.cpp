@@ -2,9 +2,9 @@
 
 using namespace std;
 
-#define OK 1
-#define OVERFLOW -2
+#define OK 0
 #define ERROR -1
+#define OVERFLOW -2
 #define MAXSIZE 100
 
 typedef int Status;
@@ -12,57 +12,55 @@ typedef int Status;
 typedef struct
 {
     int weight;
-    int parent, lch, rch;
-} *HuffmanTree, HTNode;
+    int parent, left_child, right_child;
+} *huffman_tree, huffman_tree_node;
 
-void CreatHuffmanTree(HuffmanTree HT, int n);
-void Select(HuffmanTree HT, int n, int &min1, int &min2);
+void creatHuffmanTree(huffman_tree HT, int n);
+void Select(huffman_tree HT, int n, int &min1, int &min2);
 
 int main()
 {
     int n = 10;
-    HuffmanTree HT;
-    CreatHuffmanTree(HT, n);
+    huffman_tree HT;
+    creatHuffmanTree(HT, n);
     for (int i = 1; i <= n; i++)
-    {
-        cout << HT[i].weight << "   " << HT[i].parent << "   " << HT[i].lch << "   "
-             << "   " << HT[i].rch;
-        cout << endl;
-    }
+        cout << HT[i].weight << "\t"
+        << HT[i].parent << "\t"
+        << HT[i].left_child << "\t"
+        << HT[i].right_child << endl;
+    return 0;
 }
 
-void CreatHuffmanTree(HuffmanTree HT, int n)
+void creatHuffmanTree(huffman_tree HT, int n)
 {
     int m, s1, s2;
     if (n <= 1)
         return;
     m = 2 * n - 1;
-    HT = new HTNode[m + 1];
+    HT = new huffman_tree_node[m + 1];
     for (int i = 1; i <= m; ++i)
     {
-        HT[i].lch = 0;
-        HT[i].rch = 0;
+        HT[i].left_child = 0;
+        HT[i].right_child = 0;
         HT[i].parent = 0;
     }
-
-    cout << "Enter " << n << "number";
+    cout << "Enter " << n << "number" << endl;
     for (int i = 1; i <= n; ++i)
         cin >> HT[i].weight;
-
     for (int i = n + 1; i <= m; ++i)
     {
         Select(HT, i - 1, s1, s2);
-        cout << s1 << "   " << s2 << endl;
+        cout << s1 << "\t" << s2 << endl;
 
         HT[s1].parent = i;
         HT[s2].parent = i;
-        HT[i].lch = s1;
-        HT[i].rch = s2;
+        HT[i].left_child = s1;
+        HT[i].right_child = s2;
         HT[i].weight = HT[s1].weight + HT[s2].weight;
     }
 }
 
-void Select(HuffmanTree HT, int n, int &min1, int &min2)
+void Select(huffman_tree HT, int n, int &min1, int &min2)
 {
 
     min1 = min2 = 1;
