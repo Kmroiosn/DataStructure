@@ -12,14 +12,14 @@ done
 # print input parameters
 echo "input:"
 
-lineSeparator
+lineSeparator()
 
 for i in 0 1 2 3 4 5 6 7 8 9
 do
     echo ${input[i]}
 done
 
-lineSeparator
+lineSeparator()
 
 # run the executable and input
 echo ${input[@]}|./hafumantree.out
