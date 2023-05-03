@@ -3,7 +3,6 @@
 # use "./makefile" build executable from source code
 make
 
-#make random number and save to input parameters
 for i in 0 1 2 3 4 5 6 7 8 9
 do
     input[i]=$RANDOM
@@ -21,7 +20,6 @@ done
 
 # lineSeparator()
 
-# run the executable and input
 echo ${input[@]}|./huffmantree.out
 
 # use makefile remove the executable
