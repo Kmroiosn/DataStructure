@@ -44,9 +44,9 @@ Status CreateUDN(AMGraph &G)
     for (i = 0; i < G.vexnum; ++i)
         cin >> G.vexs[i];
 
-    for (i = 0; i < G.vexnum; ++i)
+    for (i = 0; i < G.vexnum; ++i)  
         for (j = 0; j < G.vexnum; ++j)
-            G.arcs[i][j] = 0;
+            cin >> G.arcs[i][j];
 
     for (int k = 0; k < G.arcnum; ++k)
     {
@@ -94,4 +94,5 @@ void DFS(AMGraph G, int v)
     for (int w = 0; w < G.vexnum; w++)
         if ((G.arcs[v][w] != 0) && (!visited[w]))
             DFS(G, w);
+            cout << G.arcs[v][w];
 }
