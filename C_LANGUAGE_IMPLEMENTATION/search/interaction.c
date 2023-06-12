@@ -64,10 +64,13 @@ int main()
 			printf("%d\n", InsertSort(&ST, ST.length));
 			break;
 		case '6':
+			printf("%d\n", SelectionSort(&ST, ST.length));
 			break;
 		case '7':
+			printf("%d\n", BubbleSort(&ST, ST.length));
 			break;
 		case '8':
+			printf("%d\n", QuickSort(&ST,0, ST.length));
 			break;
 		case 'q':
 			delete_sq(&ST);

@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 
 #define OK 0
 #define ERROR -1
@@ -121,7 +120,6 @@ int Search_Bin(SSTable ST, KeyType key)
     return NOTFOUND;
 }
 
-
 int InsertSort(SSTable *ST, int n)
 {
     for (int i = 1; i < ST->length; i++) // 从第二个元素开始，依次将后面的元素插入到已排序序列中
@@ -140,6 +138,91 @@ int InsertSort(SSTable *ST, int n)
     }
     return OK;
 }
+
+int SelectionSort(SSTable *ST, int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        int minIndex = i; // 假设当前位置为最小元素的索引
+        // 在未排序序列中找到最小元素的索引
+        for (int j = i + 1; j < n; j++)
+        {
+            if (ST->R[j].key < ST->R[minIndex].key)
+            {
+                minIndex = j;
+            }
+        }
+        // 将最小元素与当前位置进行交换
+        if (minIndex != i)
+        {
+            ElemType temp = ST->R[i];
+            ST->R[i] = ST->R[minIndex];
+            ST->R[minIndex] = temp;
+        }
+    }
+    return OK;
+}
+
+int BubbleSort(SSTable *ST, int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (ST->R[j].key > ST->R[j + 1].key)
+            {
+                // 交换相邻元素的位置
+                ElemType temp = ST->R[j];
+                ST->R[j] = ST->R[j + 1];
+                ST->R[j + 1] = temp;
+            }
+        }
+    }
+    return OK;
+}
+
+// 快速排序的辅助函数，用于分割数组并返回分割点的索引
+int Partition(SSTable *ST, int low, int high)
+{
+    // 以最后一个元素作为基准值
+    ElemType pivot = ST->R[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++)
+    {
+        if (ST->R[j].key <= pivot.key)
+        {
+            i++;
+            // 交换元素位置
+            ElemType temp = ST->R[i];
+            ST->R[i] = ST->R[j];
+            ST->R[j] = temp;
+        }
+    }
+
+    // 将基准值放置到正确的位置
+    ElemType temp = ST->R[i + 1];
+    ST->R[i + 1] = ST->R[high];
+    ST->R[high] = temp;
+
+    return i + 1;
+}
+
+// 快速排序算法
+int QuickSort(SSTable *ST, int low, int high)
+{
+    if (low < high)
+    {
+        // 分割数组
+        int pivotIndex = Partition(ST, low, high);
+
+        // 递归排序左右子数组
+        QuickSort(ST, low, pivotIndex - 1);
+        QuickSort(ST, pivotIndex + 1, high);
+    }
+    return OK;
+}
+
 
 /**
  * 删除顺序表
