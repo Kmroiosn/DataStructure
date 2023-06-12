@@ -84,7 +84,7 @@ int InitList_Sq(SSTable *ST, int n)
  *     ST: 顺序表
  *     key: 要查找的关键字
  * 返回值：
- *     若成功返回其位置信息，否则返回OK
+ *     若成功返回其位置信息，否则返回NOTFOUND
  */
 int Search_Seq(SSTable ST, KeyType key)
 {
@@ -97,8 +97,15 @@ int Search_Seq(SSTable ST, KeyType key)
     return NOTFOUND;
 }
 
-int InsertSort(SSTable *ST, int n);
-
+/**
+ * 二分查找
+ * 在有序顺序表中查找指定关键字的元素
+ * 参数：
+ *     ST: 顺序表
+ *     key: 要查找的关键字
+ * 返回值：
+ *     若成功返回其位置信息，否则返回NOTFOUND
+ */
 int Search_Bin(SSTable ST, KeyType key)
 {
     InsertSort(&ST, ST.length);
@@ -120,6 +127,15 @@ int Search_Bin(SSTable ST, KeyType key)
     return NOTFOUND;
 }
 
+/**
+ * 直接插入排序
+ * 对顺序表进行直接插入排序
+ * 参数：
+ *     ST: 顺序表指针
+ *     n: 顺序表长度
+ * 返回值：
+ *     排序成功返回OK
+ */
 int InsertSort(SSTable *ST, int n)
 {
     for (int i = 1; i < ST->length; i++) // 从第二个元素开始，依次将后面的元素插入到已排序序列中
@@ -139,6 +155,15 @@ int InsertSort(SSTable *ST, int n)
     return OK;
 }
 
+/**
+ * 选择排序
+ * 对顺序表进行选择排序
+ * 参数：
+ *     ST: 顺序表指针
+ *     n: 顺序表长度
+ * 返回值：
+ *     排序成功返回OK
+ */
 int SelectionSort(SSTable *ST, int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -163,6 +188,15 @@ int SelectionSort(SSTable *ST, int n)
     return OK;
 }
 
+/**
+ * 冒泡排序
+ * 对顺序表进行冒泡排序
+ * 参数：
+ *     ST: 顺序表指针
+ *     n: 顺序表长度
+ * 返回值：
+ *     排序成功返回OK
+ */
 int BubbleSort(SSTable *ST, int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -181,7 +215,9 @@ int BubbleSort(SSTable *ST, int n)
     return OK;
 }
 
-// 快速排序的辅助函数，用于分割数组并返回分割点的索引
+/**
+ * 快速排序的辅助函数，用于分割数组并返回分割点的索引
+ */
 int Partition(SSTable *ST, int low, int high)
 {
     // 以最后一个元素作为基准值
@@ -208,7 +244,16 @@ int Partition(SSTable *ST, int low, int high)
     return i + 1;
 }
 
-// 快速排序算法
+/**
+ * 快速排序算法
+ * 对顺序表进行快速排序
+ * 参数：
+ *     ST: 顺序表指针
+ *     low: 待排序子表的起始索引
+ *     high: 待排序子表的结束索引
+ * 返回值：
+ *     排序成功返回OK
+ */
 int QuickSort(SSTable *ST, int low, int high)
 {
     if (low < high)
@@ -222,7 +267,6 @@ int QuickSort(SSTable *ST, int low, int high)
     }
     return OK;
 }
-
 
 /**
  * 删除顺序表
