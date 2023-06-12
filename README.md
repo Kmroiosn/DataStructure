@@ -2,7 +2,7 @@
 
 - Main Part
 
-    - GNU Linux
+    - GNU/Linux
     - gcc
     - gdb
     - GNU make
