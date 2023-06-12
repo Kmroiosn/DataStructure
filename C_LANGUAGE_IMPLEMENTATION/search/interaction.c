@@ -11,7 +11,7 @@ int main()
 
 		char choice = '0';
 
-		printf("%s", "       顺序表查找          \n");
+		printf("%s", "       顺序表操作          \n");
 		printf("%s", "---------------------------\n");
 		printf("%s", " 1. 建立顺序表            \n");
 		printf("%s", " 2. 打印顺序表            \n");
@@ -51,17 +51,23 @@ int main()
 				printf("%d\n", main_temvar3);
 			break;
 		case '4':
+			printf("输入要查找的值：");
+			int main_input4;
+			scanf(" %d", &main_input4);
+			int main_temvar4 = Search_Bin(ST, main_input4);
+			if (main_temvar4 == -3)
+				printf("没找到对应值\n");
+			else
+				printf("%d\n", main_temvar4);
 			break;
 		case '5':
-			printf("%d\n", InsertSort(&ST, 10));
+			printf("%d\n", InsertSort(&ST, ST.length));
 			break;
 		case '6':
 			break;
 		case '7':
 			break;
 		case '8':
-			break;
-		case '9':
 			break;
 		case 'q':
 			delete_sq(&ST);

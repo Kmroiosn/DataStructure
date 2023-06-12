@@ -98,23 +98,44 @@ int Search_Seq(SSTable ST, KeyType key)
     return NOTFOUND;
 }
 
+int InsertSort(SSTable *ST, int n);
+
 int Search_Bin(SSTable ST, KeyType key)
 {
-    int i = 0;
+    InsertSort(&ST, ST.length);
+
+    int low = 0;
+    int high = ST.length - 1;
+
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+
+        if (key == ST.R[mid].key)
+            return ST.R[mid].otherinfo.id;
+        else if (key < ST.R[mid].key)
+            high = mid - 1;
+        else
+            low = mid + 1;
+    }
+    return NOTFOUND;
 }
+
 
 int InsertSort(SSTable *ST, int n)
 {
-    for (int i = 0; i < ST->length; i++)
+    for (int i = 1; i < ST->length; i++) // 从第二个元素开始，依次将后面的元素插入到已排序序列中
     {
-        if (ST->R[i].key > ST->R[i + 1].key)
+        if (ST->R[i].key < ST->R[i - 1].key) // 如果当前元素比前一个元素小，则需要将其插入到正确的位置
         {
-            ElemType tem;
-            tem = ST->R[i];
-            ST->R[i] = ST->R[i + 1];
-            // for (int j = i + 1; ST->R[i].key < ST->R[j].key; j++)
-            //     ST->R[j + 1] = ST->R[j];
-            ST->R[i + 1] = tem;
+            ElemType temp = ST->R[i]; // 保存当前元素
+            int j = i - 1;
+            while (j >= 0 && ST->R[j].key > temp.key) // 向前遍历已排序序列，找到插入位置
+            {
+                ST->R[j + 1] = ST->R[j]; // 后移元素
+                j--;
+            }
+            ST->R[j + 1] = temp; // 插入当前元素到正确的位置
         }
     }
     return OK;
