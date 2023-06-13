@@ -93,8 +93,36 @@ int Search_Seq(SSTable ST, KeyType key)
     { // 从前往后找
         if (ST.R[i].key == key)
             return ST.R[i].otherinfo.id;
-    }
+    }   
     return NOTFOUND;
+}
+
+/**
+ * 直接插入排序
+ * 对顺序表进行直接插入排序
+ * 参数：
+ *     ST: 顺序表指针
+ *     n: 顺序表长度
+ * 返回值：
+ *     排序成功返回OK
+ */
+int InsertSort(SSTable *ST, int n)
+{
+    for (int i = 1; i < ST->length; i++) // 从第二个元素开始，依次将后面的元素插入到已排序序列中
+    {
+        if (ST->R[i].key < ST->R[i - 1].key) // 如果当前元素比前一个元素小，则需要将其插入到正确的位置
+        {
+            ElemType temp = ST->R[i]; // 保存当前元素
+            int j = i - 1;
+            while (j >= 0 && ST->R[j].key > temp.key) // 向前遍历已排序序列，找到插入位置
+            {
+                ST->R[j + 1] = ST->R[j]; // 后移元素
+                j--;
+            }
+            ST->R[j + 1] = temp; // 插入当前元素到正确的位置
+        }
+    }
+    return OK;
 }
 
 /**
@@ -125,34 +153,6 @@ int Search_Bin(SSTable ST, KeyType key)
             low = mid + 1;
     }
     return NOTFOUND;
-}
-
-/**
- * 直接插入排序
- * 对顺序表进行直接插入排序
- * 参数：
- *     ST: 顺序表指针
- *     n: 顺序表长度
- * 返回值：
- *     排序成功返回OK
- */
-int InsertSort(SSTable *ST, int n)
-{
-    for (int i = 1; i < ST->length; i++) // 从第二个元素开始，依次将后面的元素插入到已排序序列中
-    {
-        if (ST->R[i].key < ST->R[i - 1].key) // 如果当前元素比前一个元素小，则需要将其插入到正确的位置
-        {
-            ElemType temp = ST->R[i]; // 保存当前元素
-            int j = i - 1;
-            while (j >= 0 && ST->R[j].key > temp.key) // 向前遍历已排序序列，找到插入位置
-            {
-                ST->R[j + 1] = ST->R[j]; // 后移元素
-                j--;
-            }
-            ST->R[j + 1] = temp; // 插入当前元素到正确的位置
-        }
-    }
-    return OK;
 }
 
 /**
