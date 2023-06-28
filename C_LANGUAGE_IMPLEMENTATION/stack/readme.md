@@ -41,7 +41,7 @@ subString(\&Sub,S,pos,len)  \\
     \qquad Operation:\ Use\ Sub\ to\ return\ the\ substring\ of\ length\ len\ starting\ from\ the\ posth\ character\ of\ the\ string\ S  \\
 index(S,T,pos)  \\
     \qquad Initial\ Condition:\ String\ S\ and\ T\ exists,\ T\ is\ not\ empty,\ 1\leq pos\leq strLength(S)   \\
-    \qquad Operation:\ If\ there\ is\ a\ substring\ with\ the\ same\ value\ as\ string\ T\ in\ the\ main\ string\ S,\ then\ return\ the\ position\ where\ it\ appears\ for\ the\ first\ time\ after\ the\ character\ pos\ in\ the\ main\ string\ S,\ otherwise\ the\ function\ value\ is\ 0  \\
+    \qquad Operation:\ If\ there\ is\ a\ substring\ with\ the\ same\ value\ as\ string\ T\ in\ the\ main\ string\ S,\ then\ return\ the\ position\ where\ it\ appears\ for\ the\ first\ put outtime\ after\ the\ character\ pos\ in\ the\ main\ string\ S,\ otherwise\ the\ function\ value\ is\ 0  \\
 replace(\&S,T,V)  \\
     \qquad Initial\ Condition:\ String\ S\ T\ V\ exists,\ string T\ is not empty  \\
     \qquad Operation:\ Replace\ all\ non-overlapping\ substrings\ equal\ to\ T\ that\ occur\ in\ the\ main\ string\ S\ with\ V  \\
