@@ -4,7 +4,8 @@
 
 用于自动调试`./huffmantree.cpp`文件
 
-## `./test.sh`的分析(From ChatGPT)<!-- 注意及时更新 -->
+## `./test.sh`的分析(From ChatGPT)
+<!-- 注意及时更新 -->
 
 ```
 这段代码是一个 shell script 脚本，它的作用是编译一个名为 huffmantree 的源代码文件，并以随机数为输入参数来运行它。脚本的流程如下：
