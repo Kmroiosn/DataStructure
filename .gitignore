@@ -2,8 +2,8 @@
 # The current directory cannot be ignored
 *
 
-!.c
-!.h
+!*.c
+!*.h
 
 !*.cpp
 !*.hpp
