@@ -1,2 +1,0 @@
-# 我有一个问题
-怎么将其他的markedown文件嵌入这个markdown文件并显示

@@ -1,1 +1,0 @@
-# this is some code by c language

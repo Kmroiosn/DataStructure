@@ -1,8 +1,22 @@
-CPP_LANGUAGE_IMPLEMENTATION/_build/*
-CPP_LANGUAGE_IMPLEMENTATION/bin
-CPP_LANGUAGE_IMPLEMENTATION/out
+# ignore all file
+# The current directory cannot be ignored
+*
 
-!CPP_LANGUAGE_IMPLEMENTATION/_build/cmake_and_make_here!.txt
+# except this floder with c language model
+!/c_lang/*.c
+!/c_lang/*.h
+!/c_lang/*.s
+!/c_lang/*.py
+!/c_lang/*.md
+!/c_lang/makefile
 
-.vscode/*
-.vs/*
+# except this floder with cpp language model
+!/cpp_lang/*.cpp
+!/cpp_lang/*.hpp
+!/cpp_lang/*.s
+!/cpp_lang/*.py
+!/cpp_lang/*.md
+!/cpp_lang/makefile
+
+# except this floder with docment
+!/document/

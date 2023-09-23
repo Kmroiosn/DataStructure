@@ -7,12 +7,6 @@
     - gdb
     - GNU make
 
-- Extension
-
-    - LaTex
-        - Windows11Pro
-        - MikTex
-
 # DataStructure
 data structure classwork by sherlong
 
