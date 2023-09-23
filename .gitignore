@@ -1,0 +1,21 @@
+*
+
+!LICENSE
+!.gitignore
+
+!*/
+
+!*.c
+!*.cpp
+
+!*.h
+!*.hpp
+
+!*.py
+
+!*.md
+
+# please do not use this file nomal
+!*.txt
+
+!makefile
