@@ -5,6 +5,8 @@
 
 !*/
 
+temporary/
+
 !*.c
 !*.cpp
 
@@ -15,7 +17,7 @@
 
 !*.md
 
-# please do not use this file nomal
+# please do not use this file normal
 !*.txt
 
 !makefile
