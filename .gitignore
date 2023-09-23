@@ -2,21 +2,16 @@
 # The current directory cannot be ignored
 *
 
-# except this floder with c language model
-!/c_lang/*.c
-!/c_lang/*.h
-!/c_lang/*.s
-!/c_lang/*.py
-!/c_lang/*.md
-!/c_lang/makefile
+!.c
+!.h
 
-# except this floder with cpp language model
-!/cpp_lang/*.cpp
-!/cpp_lang/*.hpp
-!/cpp_lang/*.s
-!/cpp_lang/*.py
-!/cpp_lang/*.md
-!/cpp_lang/makefile
+!*.cpp
+!*.hpp
+
+!*.s
+!*.py
+!*.md
+!makefile
 
 # except this floder with docment
 !/document/
