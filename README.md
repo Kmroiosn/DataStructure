@@ -7,65 +7,10 @@
     - gdb
     - GNU make
 
-# DataStructure
-data structure classwork by sherlong
+- Other tools
 
-This repository is for sharing and discussing assignments from Data Structures courses
+    - Python
 
-- data structure
+# About This project
 
-    - logical structure
-
-        - linear structure
-
-            - linear table
-
-            - stacks and queues
-
-            - string
-
-        - nonlinear structure
-
-            - set structure
-
-            - tree structure
-
-            - graph structure
-
-    - storage structure
-
-        - sequential storage structure
-
-        - linked storage structure
-
-- algorithm
-
-    - definition
-
-    - characteristic
-
-        - finiteness
-
-        - determinacy
-
-        - feasibility
-
-        - input
-
-        - output
-
-    - evaluation criterion
-
-        - validity
-
-        - readability
-
-        - robustness
-
-        - efficiency
-
-    - efficiency measurement
-
-        - time complexity
-
-        - spatial complexity
+This is a repository for storing sherlongqu related data structure practices, and sharing it with others. I hope it will be useful to you
