@@ -1,24 +1,25 @@
 #include <stdlib.h>
 
-#define u_8 unsigned char
 #define TRUE 1
 #define FALSE 0
+#define MAX_EDGE 1000
 
 typedef struct graph_node
 {
-    u_8 data;
-    char script[];
+    int id;
+    int data;
+    char script[100];
 } graph_node;
 
 typedef struct graph_shape
 {
-    u_8 graph_shape_weight;
-    u_8 graph_shape_height;
+    int graph_shape_weight;
+    int graph_shape_height;
     graph_node *graph;
-    u_8 **edge;
+    int edges[MAX_EDGE][MAX_EDGE];
 } graph_shape;
 
-u_8 graph_init(graph_shape *shape, u_8 weight, u_8 height)
+int graph_init(graph_shape *shape, int weight, int height)
 {
     if (weight > 0 && height > 0)
     {
@@ -30,54 +31,7 @@ u_8 graph_init(graph_shape *shape, u_8 weight, u_8 height)
     return FALSE;
 }
 
-u_8 graph_edge_init(graph_shape *shape)
-{
-    if (shape->graph_shape_weight > 0 && shape->graph_shape_height > 0)
-    {
-        shape->edge = (u_8 **)malloc(sizeof(u_8 *) * shape->graph_shape_weight);
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
-        {
-            shape->edge[i] = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_height);
-        }
-        return TRUE;
-    }
-    return FALSE;
-}
-
-u_8 graph_edge_set(graph_shape *shape, u_8 x, u_8 y, u_8 value)
-{
-    if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
-    {
-        shape->edge[x][y] = value;
-        return TRUE;
-    }
-    return FALSE;
-}
-
-u_8 graph_edge_get(graph_shape *shape, u_8 x, u_8 y)
-{
-    if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
-    {
-        return shape->edge[x][y];
-    }
-    return FALSE;
-}
-
-u_8 graph_edge_free(graph_shape *shape)
-{
-    if (shape->graph_shape_weight > 0 && shape->graph_shape_height > 0)
-    {
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
-        {
-            free(shape->edge[i]);
-        }
-        free(shape->edge);
-        return TRUE;
-    }
-    return FALSE;
-}
-
-u_8 graph_free(graph_shape *shape)
+int graph_free(graph_shape *shape)
 {
     if (shape->graph_shape_weight > 0 && shape->graph_shape_height > 0)
     {
@@ -87,7 +41,7 @@ u_8 graph_free(graph_shape *shape)
     return FALSE;
 }
 
-u_8 graph_insert_vertex(graph_shape *shape, u_8 x, u_8 y)
+int graph_insert_vertex(graph_shape *shape, int x, int y)
 {
     if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
     {
@@ -97,7 +51,7 @@ u_8 graph_insert_vertex(graph_shape *shape, u_8 x, u_8 y)
     return FALSE;
 }
 
-u_8 graph_insert_edge(graph_shape *shape, u_8 x, u_8 y, u_8 value)
+int graph_insert_edge(graph_shape *shape, int x, int y, int value)
 {
     if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
     {
@@ -107,7 +61,7 @@ u_8 graph_insert_edge(graph_shape *shape, u_8 x, u_8 y, u_8 value)
     return FALSE;
 }
 
-u_8 graph_delete_vertex(graph_shape *shape, u_8 x, u_8 y)
+int graph_delete_vertex(graph_shape *shape, int x, int y)
 {
     if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
     {
@@ -117,7 +71,7 @@ u_8 graph_delete_vertex(graph_shape *shape, u_8 x, u_8 y)
     return FALSE;
 }
 
-u_8 graph_delete_edge(graph_shape *shape, u_8 x, u_8 y)
+int graph_delete_edge(graph_shape *shape, int x, int y)
 {
     if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
     {
@@ -127,13 +81,13 @@ u_8 graph_delete_edge(graph_shape *shape, u_8 x, u_8 y)
     return FALSE;
 }
 
-u_8 graph_print(graph_shape *shape)
+int graph_print(graph_shape *shape)
 {
     if (shape->graph_shape_weight > 0 && shape->graph_shape_height > 0)
     {
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
-            for (u_8 j = 0; j < shape->graph_shape_height; j++)
+            for (int j = 0; j < shape->graph_shape_height; j++)
             {
                 printf("%hhu ", shape->edge[i][j]);
             }
@@ -144,7 +98,7 @@ u_8 graph_print(graph_shape *shape)
     return FALSE;
 }
 
-u_8 graph_depth_first_search(graph_shape *shape, u_8 x, u_8 y)
+int graph_depth_first_search(graph_shape *shape, int x, int y)
 {
     if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
     {
@@ -174,7 +128,7 @@ u_8 graph_depth_first_search(graph_shape *shape, u_8 x, u_8 y)
     return FALSE;
 }
 
-u_8 graph_breadth_first_search(graph_shape *shape, u_8 x, u_8 y)
+int graph_breadth_first_search(graph_shape *shape, int x, int y)
 {
     if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
     {
@@ -204,18 +158,18 @@ u_8 graph_breadth_first_search(graph_shape *shape, u_8 x, u_8 y)
     return FALSE;
 }
 
-u_8 graph_topological_sort(graph_shape *shape)
+int graph_topological_sort(graph_shape *shape)
 {
     if (shape->graph_shape_weight > 0 && shape->graph_shape_height > 0)
     {
-        u_8 *in_degree = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        int *in_degree = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
             in_degree[i] = 0;
         }
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
-            for (u_8 j = 0; j < shape->graph_shape_height; j++)
+            for (int j = 0; j < shape->graph_shape_height; j++)
             {
                 if (shape->edge[i][j] == 1)
                 {
@@ -223,9 +177,9 @@ u_8 graph_topological_sort(graph_shape *shape)
                 }
             }
         }
-        u_8 *queue = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        u_8 front = 0, rear = 0;
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        int *queue = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        int front = 0, rear = 0;
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
             if (in_degree[i] == 0)
             {
@@ -234,9 +188,9 @@ u_8 graph_topological_sort(graph_shape *shape)
         }
         while (front != rear)
         {
-            u_8 temp = queue[front++];
+            int temp = queue[front++];
             printf("%hhu ", temp);
-            for (u_8 i = 0; i < shape->graph_shape_height; i++)
+            for (int i = 0; i < shape->graph_shape_height; i++)
             {
                 if (shape->edge[temp][i] == 1)
                 {
@@ -255,24 +209,24 @@ u_8 graph_topological_sort(graph_shape *shape)
     return FALSE;
 }
 
-u_8 graph_prim(graph_shape *shape)
+int graph_prim(graph_shape *shape)
 {
     if (shape->graph_shape_weight > 0 && shape->graph_shape_height > 0)
     {
-        u_8 *low_cost = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        u_8 *adjvex = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        u_8 *s = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        int *low_cost = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        int *adjvex = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        int *s = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
             low_cost[i] = shape->edge[0][i];
             adjvex[i] = 0;
             s[i] = 0;
         }
         s[0] = 1;
-        for (u_8 i = 1; i < shape->graph_shape_weight; i++)
+        for (int i = 1; i < shape->graph_shape_weight; i++)
         {
-            u_8 min = 0;
-            for (u_8 j = 1; j < shape->graph_shape_weight; j++)
+            int min = 0;
+            for (int j = 1; j < shape->graph_shape_weight; j++)
             {
                 if (s[j] == 0 && low_cost[j] < low_cost[min])
                 {
@@ -281,7 +235,7 @@ u_8 graph_prim(graph_shape *shape)
             }
             printf("%hhu %hhu\n", adjvex[min], min);
             s[min] = 1;
-            for (u_8 j = 1; j < shape->graph_shape_weight; j++)
+            for (int j = 1; j < shape->graph_shape_weight; j++)
             {
                 if (s[j] == 0 && shape->edge[min][j] < low_cost[j])
                 {
@@ -298,19 +252,19 @@ u_8 graph_prim(graph_shape *shape)
     return FALSE;
 }
 
-u_8 graph_kruskal(graph_shape *shape)
+int graph_kruskal(graph_shape *shape)
 {
     if (shape->graph_shape_weight > 0 && shape->graph_shape_height > 0)
     {
-        u_8 *parent = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        int *parent = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
             parent[i] = 0;
         }
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
-            u_8 min = 0;
-            for (u_8 j = 1; j < shape->graph_shape_weight; j++)
+            int min = 0;
+            for (int j = 1; j < shape->graph_shape_weight; j++)
             {
                 if (shape->edge[i][j] < shape->edge[min][parent[min]])
                 {
@@ -326,24 +280,24 @@ u_8 graph_kruskal(graph_shape *shape)
     return FALSE;
 }
 
-u_8 graph_dijkstra(graph_shape *shape, u_8 x, u_8 y)
+int graph_dijkstra(graph_shape *shape, int x, int y)
 {
     if (x < shape->graph_shape_weight && y < shape->graph_shape_height)
     {
-        u_8 *dist = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        u_8 *path = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        u_8 *s = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_weight);
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        int *dist = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        int *path = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        int *s = (int *)malloc(sizeof(int) * shape->graph_shape_weight);
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
             dist[i] = shape->edge[x][i];
             path[i] = x;
             s[i] = 0;
         }
         s[x] = 1;
-        for (u_8 i = 1; i < shape->graph_shape_weight; i++)
+        for (int i = 1; i < shape->graph_shape_weight; i++)
         {
-            u_8 min = 0;
-            for (u_8 j = 1; j < shape->graph_shape_weight; j++)
+            int min = 0;
+            for (int j = 1; j < shape->graph_shape_weight; j++)
             {
                 if (s[j] == 0 && dist[j] < dist[min])
                 {
@@ -351,7 +305,7 @@ u_8 graph_dijkstra(graph_shape *shape, u_8 x, u_8 y)
                 }
             }
             s[min] = 1;
-            for (u_8 j = 1; j < shape->graph_shape_weight; j++)
+            for (int j = 1; j < shape->graph_shape_weight; j++)
             {
                 if (s[j] == 0 && dist[min] + shape->edge[min][j] < dist[j])
                 {
@@ -361,7 +315,7 @@ u_8 graph_dijkstra(graph_shape *shape, u_8 x, u_8 y)
             }
         }
         printf("%hhu ", dist[y]);
-        u_8 temp = y;
+        int temp = y;
         while (temp != x)
         {
             printf("%hhu ", temp);
@@ -376,30 +330,30 @@ u_8 graph_dijkstra(graph_shape *shape, u_8 x, u_8 y)
     return FALSE;
 }
 
-u_8 graph_floyd(graph_shape *shape)
+int graph_floyd(graph_shape *shape)
 {
     if (shape->graph_shape_weight > 0 && shape->graph_shape_height > 0)
     {
-        u_8 **dist = (u_8 **)malloc(sizeof(u_8 *) * shape->graph_shape_weight);
-        u_8 **path = (u_8 **)malloc(sizeof(u_8 *) * shape->graph_shape_weight);
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        int **dist = (int **)malloc(sizeof(int *) * shape->graph_shape_weight);
+        int **path = (int **)malloc(sizeof(int *) * shape->graph_shape_weight);
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
-            dist[i] = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_height);
-            path[i] = (u_8 *)malloc(sizeof(u_8) * shape->graph_shape_height);
+            dist[i] = (int *)malloc(sizeof(int) * shape->graph_shape_height);
+            path[i] = (int *)malloc(sizeof(int) * shape->graph_shape_height);
         }
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
-            for (u_8 j = 0; j < shape->graph_shape_height; j++)
+            for (int j = 0; j < shape->graph_shape_height; j++)
             {
                 dist[i][j] = shape->edge[i][j];
                 path[i][j] = j;
             }
         }
-        for (u_8 k = 0; k < shape->graph_shape_weight; k++)
+        for (int k = 0; k < shape->graph_shape_weight; k++)
         {
-            for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+            for (int i = 0; i < shape->graph_shape_weight; i++)
             {
-                for (u_8 j = 0; j < shape->graph_shape_height; j++)
+                for (int j = 0; j < shape->graph_shape_height; j++)
                 {
                     if (dist[i][k] + dist[k][j] < dist[i][j])
                     {
@@ -409,23 +363,23 @@ u_8 graph_floyd(graph_shape *shape)
                 }
             }
         }
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
-            for (u_8 j = 0; j < shape->graph_shape_height; j++)
+            for (int j = 0; j < shape->graph_shape_height; j++)
             {
                 printf("%hhu ", dist[i][j]);
             }
             printf("\n");
         }
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
-            for (u_8 j = 0; j < shape->graph_shape_height; j++)
+            for (int j = 0; j < shape->graph_shape_height; j++)
             {
                 printf("%hhu ", path[i][j]);
             }
             printf("\n");
         }
-        for (u_8 i = 0; i < shape->graph_shape_weight; i++)
+        for (int i = 0; i < shape->graph_shape_weight; i++)
         {
             free(dist[i]);
             free(path[i]);

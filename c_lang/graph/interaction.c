@@ -1,10 +1,8 @@
 #include <stdio.h>
-
 #include "realize.h"
 
-u_8 interaction(void)
+int interaction(void)
 {
-    u_8 choice = 0;
     printf("1. Create a graph\n");
     printf("2. Insert a vertex\n");
     printf("3. Insert an edge\n");
@@ -20,13 +18,14 @@ u_8 interaction(void)
     printf("13. Print the graph\n");
     printf("14. Exit\n");
     printf("Please input your choice: ");
-    scanf("%hhu", &choice);
-    return choice;
+    int t;
+    scanf("%d", &t);
+    return t;
 }
 
 void create_graph(graph_shape *shape)
 {
-    u_8 weight = 0, height = 0;
+    int weight = 0, height = 0;
     printf("Please input the weight of the graph: ");
     scanf("%hhu", &weight);
     printf("Please input the height of the graph: ");
@@ -43,7 +42,7 @@ void create_graph(graph_shape *shape)
 
 void insert_vertex(graph_shape *shape)
 {
-    u_8 x = 0, y = 0;
+    int x = 0, y = 0;
     printf("Please input the position of the vertex: ");
     scanf("%hhu %hhu", &x, &y);
     if (graph_insert_vertex(shape, x, y) == TRUE)
@@ -58,7 +57,7 @@ void insert_vertex(graph_shape *shape)
 
 void insert_edge(graph_shape *shape)
 {
-    u_8 x = 0, y = 0, value = 0;
+    int x = 0, y = 0, value = 0;
     printf("Please input the position of the edge: ");
     scanf("%hhu %hhu", &x, &y);
     printf("Please input the value of the edge: ");
@@ -75,7 +74,7 @@ void insert_edge(graph_shape *shape)
 
 void delete_vertex(graph_shape *shape)
 {
-    u_8 x = 0, y = 0;
+    int x = 0, y = 0;
     printf("Please input the position of the vertex: ");
     scanf("%hhu %hhu", &x, &y);
     if (graph_delete_vertex(shape, x, y) == TRUE)
@@ -90,7 +89,7 @@ void delete_vertex(graph_shape *shape)
 
 void delete_edge(graph_shape *shape)
 {
-    u_8 x = 0, y = 0;
+    int x = 0, y = 0;
     printf("Please input the position of the edge: ");
     scanf("%hhu %hhu", &x, &y);
     if (graph_delete_edge(shape, x, y) == TRUE)
@@ -105,7 +104,7 @@ void delete_edge(graph_shape *shape)
 
 void depth_first_search(graph_shape *shape)
 {
-    u_8 x = 0, y = 0;
+    int x = 0, y = 0;
     printf("Please input the position of the vertex: ");
     scanf("%hhu %hhu", &x, &y);
     if (graph_depth_first_search(shape, x, y) == TRUE)
@@ -120,7 +119,7 @@ void depth_first_search(graph_shape *shape)
 
 void breadth_first_search(graph_shape *shape)
 {
-    u_8 x = 0, y = 0;
+    int x = 0, y = 0;
     printf("Please input the position of the vertex: ");
     scanf("%hhu %hhu", &x, &y);
     if (graph_breadth_first_search(shape, x, y) == TRUE)
@@ -171,7 +170,7 @@ void kruskal(graph_shape *shape)
 
 void dijkstra(graph_shape *shape)
 {
-    u_8 x = 0, y = 0;
+    int x = 0, y = 0;
     printf("Please input the position of the vertex: ");
     scanf("%hhu %hhu", &x, &y);
     if (graph_dijkstra(shape, x, y) == TRUE)
@@ -222,7 +221,7 @@ void exit_graph(graph_shape *shape)
 
 int main(){
     graph_shape shape;
-    u_8 choice = 0;
+    int choice = 0;
     while (1)
     {
         choice = interaction();
